@@ -53,25 +53,24 @@ export class FilterBy implements PipeTransform {
     }
   }
 
-    transform(array: any[], filter: string): any {
-        if(array==null){
-            return null;
-        }
-        const type = typeof filter;
-
-        if(type === 'string'){
-            console.log("IMA STRING! WUTTTTT!");
-            return array.filter(this.filterByString(filter));
-        }
-
-        if(type == 'object'){
-            return array.filter(this.filterByObject(filter));
-        } else {
-            console.log("Unknown filter type???");
-            console.log(type);
-            console.log(filter);
-            return array;
-        }
-
+  transform(array: any[], filter: string): any {
+    if(array==null){
+        return null;
     }
+    const type = typeof filter;
+
+    if(type === 'string'){
+        console.log("IMA STRING! WUTTTTT!");
+        return array.filter(this.filterByString(filter));
+    }
+
+    if(type == 'object'){
+        return array.filter(this.filterByObject(filter));
+    } else {
+        console.log("Unknown filter type???");
+        console.log(type);
+        console.log(filter);
+        return array;
+    }
+  }
 }
