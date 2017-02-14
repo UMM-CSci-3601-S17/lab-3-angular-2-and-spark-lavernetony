@@ -17,6 +17,8 @@ export class FilterBy implements PipeTransform {
             booleanVal = true;
         } else if (filter === 'false') {
             booleanVal = false;
+        } else if (filter === '') {
+            return value => true;
         } else {
             throw new TypeError("The string's content should be either 'true' or 'false'");
         }
