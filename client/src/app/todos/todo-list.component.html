@@ -2,33 +2,34 @@
     <li class="list-group-item list-group-item-info">
         <!--<input #input type="text" placeholder="Search" [(ngModel)]="search">-->
         Body:
-        <input type="text" id="body">
+        <input #input type="text" [(ngModel)]="body">
 
         Owner:
-        <input type="text" id="owner">
+        <input #input type="text" [(ngModel)]="owner">
 
         Category:
-        <input type="text" id="category">
+        <input #input type="text" [(ngModel)]="category">
 
         Status:
-        <select id="status">
+        <select #input [(ngModel)]="status">
             <option value=""></option>
             <option value="true">Complete</option>
             <option value="false">Incomplete</option>
         </select>
 
-        Order by:
-        <select name="orderBy" id="orderBy" >
-            <option value=""></option>
-            <option value="owner">Owner</option>
-            <option value="body">Body</option>
-            <option value="status">Status</option>
-            <option value="category">Category</option>
-        </select>
+        <!--Order by:-->
+        <!--<select name="orderBy" id="orderBy" >-->
+            <!--<option value=""></option>-->
+            <!--<option value="owner">Owner</option>-->
+            <!--<option value="body">Body</option>-->
+            <!--<option value="status">Status</option>-->
+            <!--<option value="category">Category</option>-->
+        <!--</select>-->
 
     </li>
     <li class="list-group-item list-group-item-info">Todos</li>
-    <li *ngFor="let todo of todos | async" class="list-group-item">
+    <li *ngFor="let todo of todos | async |  filterBy: {body: body, owner: owner, category: category, status: status}"
+class="list-group-item">
         <div>{{ todo.body }}</div>
         <div class="row">
             <div class="col-md-3">{{ todo.status }}</div>
