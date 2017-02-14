@@ -18,7 +18,7 @@ export class FilterBy implements PipeTransform {
           return false;
         }
           if (filter[key] == null){
-              return true;
+              continue;
           }
 
         const type = typeof value[key];
