@@ -11,6 +11,20 @@ export class FilterBy implements PipeTransform {
         }
     }
 
+    private filterByBoolean(filter: string) {
+        let booleanVal;
+        if (filter === 'true') {
+            booleanVal = true;
+        } else if (filter === 'false') {
+            booleanVal = false;
+        } else {
+            throw new TypeError("The string's content should be either 'true' or 'false'");
+        }
+        return value => {
+            return booleanVal === value;
+        }
+    }
+
   private filterByObject(filter) {
     return value => {
       for (let key in filter) {
@@ -28,6 +42,8 @@ export class FilterBy implements PipeTransform {
           isMatching = this.filterByString(filter[key])(value[key]);
         } else if (type === 'object') {
           isMatching = this.filterByObject(filter[key])(value[key]);
+        } else if (type === 'boolean') {
+          isMatching = this.filterByBoolean(filter[key])(value[key]);
         } else {
           isMatching = this.filterDefault(filter[key])(value[key]);
         }
