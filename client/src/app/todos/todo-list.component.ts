@@ -1,5 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { TodoListService } from "./todo-list.service";
+import { Todo } from "./todo";
 import { FormsModule } from '@angular/forms';
 // import { FilterBy } from "./filter.pipe";
 
@@ -9,8 +10,8 @@ import { FormsModule } from '@angular/forms';
     templateUrl: 'todo-list.component.html',
 })
 
-export class TodoListComponent {
-    private todos: any;
+export class TodoListComponent implements OnInit{
+    public todos: Todo[];
 
     constructor(private _todoListService: TodoListService) {
         // this.todos = _todoListService.getTodos();
@@ -18,7 +19,7 @@ export class TodoListComponent {
 
     ngOnInit(): void {
         this._todoListService.getTodos().subscribe(
-            users => this.todos = users,
+            todos => this.todos = todos,
             err => {
                 console.log(err);
             }
