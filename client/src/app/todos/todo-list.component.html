@@ -28,7 +28,7 @@
 
     </li>
     <li class="list-group-item list-group-item-info">Todos</li>
-    <li *ngFor="let todo of todos | async |  filterBy: {body: body, owner: owner, category: category, status: status}"
+    <li *ngFor="let todo of todos  |  filterBy: {body: body, owner: owner, category: category, status: status}"
 class="list-group-item">
         <div>{{ todo.body }}</div>
         <div class="row">
