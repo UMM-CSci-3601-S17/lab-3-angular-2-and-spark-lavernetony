@@ -32,7 +32,13 @@
 class="list-group-item">
         <div>{{ todo.body }}</div>
         <div class="row">
-            <div class="col-md-3">{{todo.status ? "Complete" : "Incomplete"}}</div>
+            <div class="col-md-3">
+                <span [style.background]="todo.status ? 'lightgreen' : 'lightcoral'"
+                      [style.border-radius.px]="4"
+                      [style.padding]="2" >
+                    {{todo.status ? "Complete" : "Incomplete"}}
+                </span>
+            </div>
             <div class="col-md-3">{{ todo.category }}</div>
             <div class="col-md-3">{{ todo.owner }}</div>
         </div>
