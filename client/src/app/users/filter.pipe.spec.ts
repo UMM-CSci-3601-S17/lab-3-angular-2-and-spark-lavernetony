@@ -4,6 +4,7 @@ import { TodoListComponent } from "../todos/todo-list.component";
 import { TodoListService } from "../todos/todo-list.service";
 import { Observable } from "rxjs";
 import { PipeModule } from "../../pipe.module";
+import { FilterBy } from "./filter.pipe";
 
 describe("Todo list", () => {
 
@@ -59,24 +60,20 @@ describe("Todo list", () => {
         });
     }));
 
-    // it("contains all the users", () => {
-    //     expect(userList.users.length).toBe(3);
-    // });
-    //
-    // it("contains a user named 'Chris'", () => {
-    //     expect(userList.users.some((user: User) => user.name === "Chris" )).toBe(true);
-    // });
-    //
-    // it("contain a user named 'Jamie'", () => {
-    //     expect(userList.users.some((user: User) => user.name === "Jamie" )).toBe(true);
-    // });
-    //
-    // it("doesn't contain a user named 'Santa'", () => {
-    //     expect(userList.users.some((user: User) => user.name === "Santa" )).toBe(false);
-    // });
-    //
-    // it("has two users that are 37 years old", () => {
-    //     expect(userList.users.filter((user: User) => user.age === 37).length).toBe(2);
-    // });
+    it("contains all the todos", () => {
+        expect(todoList.todos.length).toBe(3);
+    });
+
+    it("contains a todo whose owner is 'Taylor'", () => {
+        expect(todoList.todos.some((todo: Todo) => todo.owner === "Taylor" )).toBe(true);
+    });
+
+    it("contain a user named 'Jamie'", () => {
+        expect(todoList.todos.some((todo: Todo) => todo.owner === "Justine" )).toBe(true);
+    });
+
+    it("doesn't contain a todo whose owner is 'Santa'", () => {
+        expect(todoList.todos.some((todo: Todo) => todo.owner === "Santa" )).toBe(false);
+    });
 
 });
