@@ -2,16 +2,16 @@
     <li class="list-group-item list-group-item-info">
         <!--<input #input type="text" placeholder="Search" [(ngModel)]="search">-->
         Body:
-        <input #input type="text" [(ngModel)]="body">
+        <input #input type="text" (input)="body = $event.target.value">
 
         Owner:
-        <input #input type="text" [(ngModel)]="owner">
+        <input #input type="text" (input)="owner = $event.target.value">
 
         Category:
-        <input #input type="text" [(ngModel)]="category">
+        <input #input type="text" (input)="category = $event.target.value">
 
         Status:
-        <select #input [(ngModel)]="status">
+        <select #input (input)="status = $event.target.value">
             <option value=""></option>
             <option value="true">Complete</option>
             <option value="false">Incomplete</option>
