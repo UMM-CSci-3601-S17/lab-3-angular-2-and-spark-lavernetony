@@ -68,12 +68,22 @@ describe("Todo list", () => {
         expect(todoList.todos.some((todo: Todo) => todo.owner === "Taylor" )).toBe(true);
     });
 
-    it("contain a user named 'Jamie'", () => {
+    it("contain a todo whose owner is 'Justine'", () => {
         expect(todoList.todos.some((todo: Todo) => todo.owner === "Justine" )).toBe(true);
     });
 
     it("doesn't contain a todo whose owner is 'Santa'", () => {
         expect(todoList.todos.some((todo: Todo) => todo.owner === "Santa" )).toBe(false);
+    });
+
+    it("contains a todo whose body contains 'haters'", () => {
+        let filter: FilterBy = new FilterBy();
+        expect(filter.transform(todoList.todos, {body: "haters"})).toEqual([todoList.todos[2]]);
+    });
+
+    it("contains two todos whose category is 'hater'", () => {
+        let filter: FilterBy = new FilterBy();
+        expect(filter.transform(todoList.todos, {category: "hater"})).toEqual([todoList.todos[0],todoList.todos[1]]);
     });
 
 });
