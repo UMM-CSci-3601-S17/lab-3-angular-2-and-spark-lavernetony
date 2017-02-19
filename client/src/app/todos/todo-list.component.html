@@ -39,7 +39,10 @@ class="list-group-item">
                     {{todo.status ? "Complete" : "Incomplete"}}
                 </span>
             </div>
-            <div class="col-md-3">{{ todo.category }}</div>
+            <div class="col-md-3">
+                <span [style.color]="stringToColorString(todo.category)">&#x25cf; </span>
+                {{ todo.category }}
+            </div>
             <div class="col-md-3">{{ todo.owner }}</div>
         </div>
     </li>
