@@ -40,7 +40,7 @@ class="list-group-item">
                 </span>
             </div>
             <div class="col-md-3">
-                <span [style.color]="stringToColorString(todo.category)">&#x25cf; </span>
+                <span [style.color]="categoryColors.get(todo.category)">&#x25cf; </span>
                 {{ todo.category }}
             </div>
             <div class="col-md-3">{{ todo.owner }}</div>

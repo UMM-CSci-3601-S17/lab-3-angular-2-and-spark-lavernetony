@@ -14,6 +14,7 @@ import { Md5 } from 'ts-md5/dist/md5';
 
 export class TodoListComponent implements OnInit{
     public todos: Todo[];
+    public categoryColors: Map<String, String>;
 
     constructor(private _todoListService: TodoListService) {
         // this.todos = _todoListService.getTodos();
@@ -21,14 +22,23 @@ export class TodoListComponent implements OnInit{
 
     ngOnInit(): void {
         this._todoListService.getTodos().subscribe(
-            todos => this.todos = todos,
+            todos => {
+                this.todos = todos;
+                this.categoryColors = new Map();
+                for (var todo of todos) {
+                    let category = todo.category;
+                    if (this.categoryColors.get(category) == null) {
+                        this.categoryColors.set(category, this.stringToColorString(category));
+                    }
+                }
+            },
             err => {
                 console.log(err);
             }
         );
     }
 
-    public stringToColorString(input: string): string {
+    private stringToColorString(input: string): string {
         let hashCode:any = Md5.hashStr(input);
 
         let r:string = hashCode.substring(0,2);
